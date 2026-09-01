@@ -1,4 +1,4 @@
-import { sequelize } from "../config/database";
+import { sequelize } from "../config/database.js";
 import { DataTypes } from "sequelize";
 
 export const Enunciados = sequelize.define('Enunciados',
@@ -11,5 +11,8 @@ export const Enunciados = sequelize.define('Enunciados',
             type:DataTypes.STRING,
             allowNull:false
         }
+    },
+    {
+        timestamps:false
     }
 )
