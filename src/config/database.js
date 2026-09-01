@@ -1,20 +1,17 @@
-import { Sequelize } from 'sequelize';
-import { env } from './env.js';
+import { Sequelize } from "sequelize";
+import 'dotenv/config'
 
-// Ahora los valores vienen del .env a través de env.js (antes estaban hardcodeados)
-export const sequelize = new Sequelize(env.DB_NAME, env.DB_USER, env.DB_PASSWORD, {
-    host: env.DB_HOST,
-    dialect: 'mysql'
-});
+export const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, '', {
+  host: process.env.DB_HOST,
+  dialect: 'mysql'
+})
 
-export const conectarDB = async () => {
+export const testDB = async () =>{
     try {
         await sequelize.authenticate();
-        console.log('Conexion a base de datos exitosa');
-
-        await sequelize.sync();
-        console.log('Tablas sincronizadas');
+        await sequelize.sync(/* {force:true} */)
+        console.log('Connection has been established successfully.');
     } catch (error) {
-        console.error('Fallo al conectar a la base de datos:', error);
+        console.error('Unable to connect to the database:', error);
     }
-};
+}
