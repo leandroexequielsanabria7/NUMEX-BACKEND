@@ -1,18 +1,4 @@
-import { matchedData } from "express-validator";
-import { TopicModel } from "../models/topic.model";
-
-export const topicCreate = async (res, req) => {
-  try {
-    const validatedData = matchedData(req);
-    const topic = await TopicModel.create(validatedData);
-    return res.status(201).json(topic);
-  } catch (error) {
-    console.log(error);
-    return res.status(500).json({ message: "Error interno del servidor." });
-  }
-};
-
-export const getAllTopics = async (res, req) => {
+export const createMultimedia = async (res, req) => {
   try {
   } catch (error) {
     console.log(error);
@@ -20,7 +6,7 @@ export const getAllTopics = async (res, req) => {
   }
 };
 
-export const getTopicById = async (res, req) => {
+export const getAllMultimedias = async (res, req) => {
   try {
   } catch (error) {
     console.log(error);
@@ -28,7 +14,7 @@ export const getTopicById = async (res, req) => {
   }
 };
 
-export const updateTopic = async (res, req) => {
+export const getMultimediaById = async (res, req) => {
   try {
   } catch (error) {
     console.log(error);
@@ -36,7 +22,15 @@ export const updateTopic = async (res, req) => {
   }
 };
 
-export const deleteTopic = async (res, req) => {
+export const updateMultimedia = async (res, req) => {
+  try {
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Error interno del servidor." });
+  }
+};
+
+export const deleteMultimedia = async (res, req) => {
   try {
   } catch (error) {
     console.log(error);

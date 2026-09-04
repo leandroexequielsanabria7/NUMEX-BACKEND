@@ -6,10 +6,12 @@ import {
   topicCreate,
   updateTopic,
 } from "../controllers/topic.controller.js";
+import { createTopicValidation } from "../middlewares/validations/topic.validations.js";
+import { validate } from "../middlewares/validate.middleware.js";
 
 export const topicRouter = Router();
 
-topicRouter.post("/topics", topicCreate);
+topicRouter.post("/topics", createTopicValidation, validate, topicCreate);
 topicRouter.get("/topics", getAllTopics);
 topicRouter.get("/topics/:id", getTopicById);
 topicRouter.put("/topics/:id", updateTopic);

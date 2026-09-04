@@ -3,11 +3,11 @@ import { sequelize } from "../config/database";
 
 export const TopicModel = sequelize.define("topic", {
   titleTopic: {
-    type: DataTypes.STRING(100),
+    type: DataTypes.STRING,
     allowNull: false,
   },
-  descriptionGeneral: {
-    type: DataTypes.STRING(100),
+  descripGeneral: {
+    type: DataTypes.STRING,
     allowNull: false,
   },
 });

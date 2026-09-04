@@ -2,14 +2,9 @@ import { DataTypes } from "sequelize";
 import { sequelize } from "../config/database.js";
 import { TopicModel } from "./topic.model.js";
 
-export const SubtopicModel = sequelize.define("subtopic", {
-  titleSubtopic: {
-    type: DataTypes.STRING(100),
-    allowNull: false,
-    unique: true,
-  },
-  descriptionSubtopic: {
-    type: DataTypes.STRING(100),
+const MultimediaModel = sequelize.define("multimedia", {
+  url: {
+    type: DataTypes.STRING,
     allowNull: false,
   },
   topic_id: {
@@ -23,9 +18,12 @@ export const SubtopicModel = sequelize.define("subtopic", {
   },
 });
 
-SubtopicModel.belongsTo(TopicModel, {
+MultimediaModel.belongsTo(TopicModel, {
   foreignKey: "topic_id",
-  as: "topicOrigin",
+  as: "topic",
 });
 
-TopicModel.hasOne(SubtopicModel, { foreignKey: "topic_id", as: "topicSon" });
+TopicModel.hasMany(MultimediaModel, {
+  foreignKey: "topic_id",
+  as: "multimedia",
+});
