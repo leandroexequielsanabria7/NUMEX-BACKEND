@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../config/database.js';
 
-export const ProfileDocente = sequelize.define('ProfileDocente', {
+export const PerfilDocente = sequelize.define('PerfilDocente', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -17,12 +17,8 @@ export const ProfileDocente = sequelize.define('ProfileDocente', {
   },
   dni: {
     type: DataTypes.STRING(20),
-    allowNull: false,
-    unique: true
-  },
-  fecha_nacimiento: {
-    type: DataTypes.DATEONLY,
     allowNull: false
+    unique: false
   },
   institucion: {
     type: DataTypes.STRING(150),
@@ -33,6 +29,6 @@ export const ProfileDocente = sequelize.define('ProfileDocente', {
     allowNull: true
   }
 }, {
-  tableName: 'Perfil_Docente',
-  timestamps: false
+  tableName: 'perfil_docente',
+  timestamps: true
 });
